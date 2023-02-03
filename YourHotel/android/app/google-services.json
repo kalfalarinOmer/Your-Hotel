@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "361491162621",
+    "project_id": "yourhotel-6ad32",
+    "storage_bucket": "yourhotel-6ad32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361491162621:android:91925e28218a628c812594",
+        "android_client_info": {
+          "package_name": "com.tefennicoders.yourhotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361491162621-l58ju3ds6tf9hdbhnf557gfsc188e511.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tefennicoders.yourhotel",
+            "certificate_hash": "b99a8b6ae7aa29be1727ba74fba79d58c62bf787"
+          }
+        },
+        {
+          "client_id": "361491162621-6l42j4s9ekr9vf9kp9hjbrepelmsvf46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg5NtI260-oxoYC56V-lmw75juUVRr4lY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361491162621-6l42j4s9ekr9vf9kp9hjbrepelmsvf46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
