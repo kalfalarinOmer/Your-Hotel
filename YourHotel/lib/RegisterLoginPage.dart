@@ -146,6 +146,8 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
   int selectedIndex_title = 0;
   int selectedIndex_answer = 0;
 
+  List<String> selectedIndexes_optionalZone = [];
+
   @override
   Widget build(BuildContext context) {
 
@@ -379,7 +381,7 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                   ),
                 ),
                 const SizedBox(height: 30,),
-//Adres girin
+
                 Visibility( visible: isRegister == true ? true : false,
                   child: Center(
                     child: Padding(
@@ -390,7 +392,7 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                     ),
                   ),
                 ),
-//ülke
+//ÜLKE GİRİŞİ
                 Visibility( visible: isRegister == true ? true : false,
                   child: GestureDetector(
                     onTap: (){
@@ -404,7 +406,7 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                             AlertDialog alertDialog = AlertDialog(
                                 title: Text( MyInheritor.of(context)?.langEng != true
                                     ? "Your Hotel uygulaması sadece Türkiye'deki oteller için kullanılabilirdir. "
-                                    "Bu yüzden ülkeniz varsayılan olarak Türkiye seçilmiştir ve değiştitirlemez."
+                                    "Bu yüzden ülkeniz varsayılan olarak Türkiye seçilmiştir ve değiştirilemez."
                                     : "Your Hotel App is only used for the hotels in Turkey. Therefore Your Country has been "
                                     "chosen as Turkey as default and it can't be changed.",
                                   style: TextStyle(color: Colors.red, fontSize: 18), textAlign: TextAlign.justify,)
@@ -441,7 +443,7 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                   ),
                 ),
                 const SizedBox(height: 30,),
-//State
+//BÖLGE GİRİŞİ
                 Visibility( visible: isRegister == true ? true : false,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
@@ -462,7 +464,7 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                   ),
                 ),
                 const SizedBox(height: 30,),
-//city
+//ŞEHİR GİRİŞİ
                 Visibility( visible: isRegister == true ? true : false,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
@@ -483,7 +485,7 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                   ),
                 ),
                 const SizedBox(height: 30,),
-//town
+//İLÇE GİRİŞ
                 Visibility( visible: isRegister == true ? true : false,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
@@ -504,7 +506,7 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                   ),
                 ),
                 const SizedBox(height: 30,),
-//Adress
+//OTEL AÇIK ADRESİ GİRİŞİ
                 Visibility( visible: isRegister == true && MyInheritor.of(context)?.isHotel == true ? true : false,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
@@ -532,7 +534,7 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                 ),
                 Visibility( visible: isRegister == true && MyInheritor.of(context)?.isHotel == true ? true : false,
                     child: const SizedBox(height: 30,)),
-//Yaş aralığı
+//YAŞ ARALIĞI GİRİŞİ
                 Visibility( visible: isRegister == true && MyInheritor.of(context)?.isVisitor == true ? true : false,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10, bottom: 20),
@@ -575,7 +577,7 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                     ),
                   ),
                 ),
-//Cinsiyet
+//CİNSİYET GİRİŞİ
                 Visibility( visible: isRegister == true && MyInheritor.of(context)?.isVisitor == true ? true : false,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10, bottom: 20),
@@ -623,7 +625,7 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                     ),
                   ),
                 ),
-//Opsiyonel
+//OPSİYONEL GİRİŞLER
                 Visibility( visible: isRegister == true && MyInheritor.of(context)?.isVisitor == true ? true : false,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10.0, right: 10, top: 10, bottom: 20),
@@ -668,20 +670,19 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                                             itemBuilder: (context, j){
                                               return TextButton(
                                                 onPressed: (){
+
                                                   onOptionalZonePressed(i, j);
 
-                                                  print(selectedSnacks);
-                                                  print(selectedSports);
                                                 },
                                                 child: Text( MyInheritor.of(context)?.langEng != true
                                                     ? optionalZone_answers_T[i][j]: optionalZone_answers_E[i][j],
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle( fontWeight: FontWeight.w700,
                                                       decoration: TextDecoration.underline,
-                                                      fontSize: i == selectedIndex_title && j == selectedIndex_answer
-                                                          ? 22: 17,
-                                                      color: i == selectedIndex_title && j == selectedIndex_answer
-                                                          ? Colors.green : Colors.blue),
+                                                      fontSize: selectedIndexes_optionalZone
+                                                          .contains("${i.toString()}${j.toString()}") ? 22: 17,
+                                                      color: selectedIndexes_optionalZone
+                                                          .contains("${i.toString()}${j.toString()}") ? Colors.green: Colors.blue),
                                                 ),
                                               );
                                             },
@@ -699,64 +700,69 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
                     ),
                   ),
                 ),
+//KAYIT/GİRİŞ BUTONLARI
                 Center(
                   child: Wrap( spacing: 20,
                     children: [
-                      FloatingActionButton.extended(
-                        backgroundColor: Colors.green,
-                        heroTag: "kaydol",
-                        icon: const Icon(Icons.add),
-                        label: Text( MyInheritor.of(context)?.langEng != true ? "KAYDOL": "REGISTER",
-                          style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                        onPressed: () async {
+                      Visibility( visible: isLogin == true ? false : true,
+                        child: FloatingActionButton.extended(
+                          backgroundColor: Colors.green,
+                          heroTag: "kaydol",
+                          icon: const Icon(Icons.add),
+                          label: Text( MyInheritor.of(context)?.langEng != true ? "KAYDOL": "REGISTER",
+                            style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                          onPressed: () async {
 
-                          if (isRegister == false) {
-                            setState(() {
-                              isRegister = true;
-                              isLogin = false;
-                            });
-                          } else if (isRegister == true) {
+                            if (isRegister == false) {
+                              setState(() {
+                                isRegister = true;
+                                isLogin = false;
+                              });
+                            } else if (isRegister == true) {
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+
+                                if (MyInheritor.of(context)?.isVisitor == true){
+                                  register();
+                                } else if (MyInheritor.of(context)?.isHotel == true){
+                                  register();
+                                  print(facilityType);
+                                }
+                              }
+                            }
+                          },
+                        ),
+                      ),
+
+                      Visibility( visible: isRegister == true ? false : true,
+                        child: FloatingActionButton.extended(
+                          backgroundColor: Colors.blue,
+                          heroTag: "giris",
+                          icon: const Icon(Icons.login),
+                          label: Text( MyInheritor.of(context)?.langEng != true ? "GİRİŞ YAP"
+                              : "LOGIN",
+                            style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                          onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
 
-                              if (MyInheritor.of(context)?.isVisitor == true){
-                                register();
-                              } else if (MyInheritor.of(context)?.isHotel == true){
-                                register();
-                                print(facilityType);
+                              if (isLogin == false) {
+                                setState(() {
+                                  isRegister = false;
+                                  isLogin = true;
+                                });
+                              } else if (isLogin == true) {
+                                logIn();
                               }
                             }
-                          }
-                        },
-                      ),
-
-                      FloatingActionButton.extended(
-                        backgroundColor: Colors.blue,
-                        heroTag: "giris",
-                        icon: const Icon(Icons.login),
-                        label: Text( MyInheritor.of(context)?.langEng != true ? "GİRİŞ YAP"
-                            : "LOGIN",
-                          style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            _formKey.currentState!.save();
-
-                            if (isLogin == false) {
-                              setState(() {
-                                isRegister = false;
-                                isLogin = true;
-                              });
-                            } else if (isLogin == true) {
-                              logIn();
-                            }
-                          }
-                        },
+                          },
+                        ),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 30,),
-
+//ŞİFREMİ SIFIRLA BUTONU
                 Visibility( visible: isLogin == false ? false : true,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 50.0),
@@ -1001,6 +1007,14 @@ class RegisterLoginPageState extends State<RegisterLoginPage>{
   }
 
   void onOptionalZonePressed(int i, int j) {
+
+    if(selectedIndexes_optionalZone.contains("${i.toString()}${j.toString()}")){
+      selectedIndexes_optionalZone.remove("${i.toString()}${j.toString()}");
+      print(selectedIndexes_optionalZone);
+    } else {
+      selectedIndexes_optionalZone.add("${i.toString()}${j.toString()}");
+      print(selectedIndexes_optionalZone);
+    }
 
     selectedIndex_title = i;
     selectedIndex_answer = j;

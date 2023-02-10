@@ -1,9 +1,7 @@
-// *visitorRegisterda formlar validate olmuyor, yaş ve cinsiyet seçimi zorunlu tutulacak.
-// *hotelRegisterda sorun var. bişiler null dönüyor
 //
 // *VİSİTORHOMEPAGE
-// *yeni rezervasyon ekle dendiğinde dialog içerisinde otelin mail adresi ve checkin date stenecek.
-// eklendiğinde otel planlanmış rezervasyonlara eklenecek ve onay bildirimi gidecek.
+// *yeni rezervasyon ekle dendiğinde dialog içerisinde otelin mail adresi ve checkin date istenecek.
+// eklendiğinde otele onay bildirimi gidecek ve onaylandığında rezervasyon onaylanacak.
 // *geçmiş rezervasyonlarda otellerin adları listelenecek ve turist bunlara tıklayarak bakabilecek.
 // *planlanmış rezervasyonlarda turist otele tıkladığında otelin sayfasına gidebilecek yada doğrudan
 // mesaj atabilecek.
@@ -15,14 +13,13 @@
 //
 //
 // *HOTELHOMEPAGE
-// *bildirimler
-// *yeni ziyaretçi ekle
+// *bildirimler ve mesajlar alanı yapılacak
+// *yeni rezervasyon eklendiğinde ziyaretçiye onay bildirimi gidecek. onaylandığnda rezervasyon eklenecek.
 // *geçmiş ziyaretçilerin analizleri:
 //   burada toplam gelen ziyaretçi sayısı, ülke, bölge, şehir, kasabalara ayrılarak verilecek.
 //   Tüm talepler kategorize edilerek analizi verilecek.
-// *gelecek ziyaretçiler:
-//   geleceği kesinleşmiş ziyaretçilerin tamamı ayrı bir sayfada listelenecek. listeleme yaklaşan tarihe göre
-//   yapılacak. mesaj gönderen turistin rengi farklı olacak. turiste tıklandığında kayıt esnasında girdiği bilgiler
+// *gelen rezervasyonlar:
+//   mesaj gönderen turistin rengi farklı olacak. turiste tıklandığında kayıt esnasında girdiği bilgiler
 //   gösterilecek yada profil sayfasına gidilecek. ayrıca filtrelere göre en çok bulunabileceği talepler
 //   listesi verilecek.
 

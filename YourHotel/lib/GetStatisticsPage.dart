@@ -74,6 +74,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
     super.dispose();
   }
 
+
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
@@ -105,6 +106,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
               ),
             ),
           ),
+//*BİLGİLENDİRME
           ValueListenableBuilder(
             valueListenable: isInfoPressed,
             builder: (context, value, child){
@@ -112,21 +114,21 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
                 child: Column(
                   children: const [
                     Padding(
-                      padding: EdgeInsets.all(20.0),
+                      padding: EdgeInsets.all(10.0),
                       child: Center(child: Text("* Bu sayfa otellere misafir edeceği turistler hakkında bazı istatistiki bilgileri "
                           "ve analizlerini sağlar.", textAlign: TextAlign.center,
                           style: TextStyle( fontWeight: FontWeight.bold, color: Colors.indigo, fontSize: 17))),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(20.0),
+                      padding: EdgeInsets.all(10.0),
                       child: Center(child: Text("** Her otel bu sayfadan istediği filtrelerde aramalar yaparak turislerin sportif "
-                          "aktiviteleri, boş zaman etkinlikleri, favori yemek türleri, favori içecek türleri, favori atıştırmalıkları, "
-                          "favori renkleri, kronik rahatsızlıkları alanlarında veritabaındaki bilgilerin analiz sonuçlarını ve "
-                          "tavsiyeleri alabilir.", textAlign: TextAlign.center,
+                          "aktiviteleri, boş zaman etkinlikleri, favori yemek türleri, favori içecek türleri, favori "
+                          "atıştırmalıkları, favori renkleri, kronik rahatsızlıkları alanlarında veritabaındaki bilgilerin analiz "
+                          "sonuçlarını ve tavsiyeleri alabilir.", textAlign: TextAlign.center,
                           style: TextStyle( fontWeight: FontWeight.bold, color: Colors.indigo, fontSize: 17))),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(20.0),
+                      padding: EdgeInsets.all(10.0),
                       child: Center(child: Text("*** Bu sayfada hiçbir şekilde turistlerin kişisel bilgileri açıklanmaz. Otelinize "
                           "gelecek turistlere özel edinmek istediğiniz bilgilere misafirlerinizin uygulamada açtığı/açacağı "
                           "profil sayfalarından ulaşabilirsiniz.", textAlign: TextAlign.center,
@@ -142,10 +144,11 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
             padding: EdgeInsets.all(20.0),
             child: Center(
               child: Text("Aşağıda verilen kategorilerden filtreler seçerek arama yapabilirsiniz. "
-                  "Her kategoriden en fazla 1 filtre seçebilirsiniz.", textAlign: TextAlign.center,
+                  "Her kategoriden en fazla 1 filtre giriniz.", textAlign: TextAlign.center,
                   style: TextStyle( fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15)),
             ),
           ),
+//FİLTRE SEÇİMİ
           Padding(
             padding: const EdgeInsets.only( left: 20.0, right: 20),
             child: Card( elevation: 20,
@@ -175,7 +178,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
               ),
             ),
           ),
-//ülke
+//ÜLKE
           ValueListenableBuilder(
             valueListenable: isCountrySelected,
             builder: (context, value, child){
@@ -202,7 +205,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
               );
             },
           ),
-//bölge
+//BÖLGE
           ValueListenableBuilder(
             valueListenable: isStateSelected,
             builder: (context, value, child){
@@ -229,7 +232,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
               );
             },
           ),
-//şehir
+//ŞEHİR
           ValueListenableBuilder(
             valueListenable: isCitySelected,
             builder: (context, value, child){
@@ -256,7 +259,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
               );
             },
           ),
-//ilçe
+//İLÇE
           ValueListenableBuilder(
             valueListenable: isTownSelected,
             builder: (context, value, child){
@@ -283,7 +286,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
               );
             },
           ),
-//yaş
+//YAŞ
           ValueListenableBuilder(
             valueListenable: isAgeSelected,
             builder: ( context, value, child) {
@@ -335,7 +338,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
               );
             },
           ),
-//cinsiyet
+//CİNSİYET
           ValueListenableBuilder(
             valueListenable: isGenderSelected,
             builder: (context, value, child){
@@ -362,7 +365,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
                                         color: isGenderMale.value == true ? Colors.green : Colors.blue ),),
                                   onPressed: () async {
                                     isGenderMale.value = true;
-                                    selectedGender = "erkek";
+                                    selectedGender = "male";
                                   },
                                 );
                               }
@@ -379,7 +382,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
                                         color: isGenderMale.value == false ? Colors.green : Colors.blue ),),
                                   onPressed: () async {
                                     isGenderMale.value = false;
-                                    selectedGender = "kadın";
+                                    selectedGender = "female";
                                   },
                                 );
                               }
@@ -392,7 +395,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
               );
             },
           ),
-//evlilik
+//EVLİLİK DURUMU
           ValueListenableBuilder(
             valueListenable: isMarriedSelected,
             builder: (context, value, child){
@@ -419,7 +422,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
                                       color: isMarried.value == true ? Colors.green : Colors.blue ),),
                                 onPressed: () async {
                                   isMarried.value = true;
-                                  marriedSelected = "evet";
+                                  marriedSelected = "evli";
                                 },
                               );
                             }
@@ -436,7 +439,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
                                         color: isMarried.value == false ? Colors.green : Colors.blue ),),
                                   onPressed: () async {
                                     isMarried.value = false;
-                                    marriedSelected = "hayır";
+                                    marriedSelected = "bekar";
                                   },
                                 );
                               }
@@ -449,7 +452,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
               );
             },
           ),
-//çocuk
+//ÇOCUK
           ValueListenableBuilder(
             valueListenable: isKidSelected,
             builder: (context, value, child){
@@ -575,7 +578,7 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
               );
             },
           ),
-
+//İSTATİSTİKLERİ GETİR
           Padding(
             padding: const EdgeInsets.all(20),
             child: SizedBox( height: 40,
@@ -657,11 +660,12 @@ class GetStatisticsPageState extends State<GetStatisticsPage>{
         town = towner.text.trim().toLowerCase();
       }
     }
+
     Navigator.push(context, MaterialPageRoute(builder: (context) => FilteredStatisticsPage(
       user_map: user_map, user_id: user_id, user_ref: user_ref,
-      country: country, state: state, city: city, town: town,
-      ageRange: selectedAge, gender: selectedGender,
-      married: marriedSelected, kidCount: selectedKid,)));
+      country0: country, state0: state, city0: city, town0: town,
+      selectedAge: selectedAge, selectedGender: selectedGender,
+      isSelected_married: marriedSelected, selectedKid: selectedKid,)));
 
   }
 
